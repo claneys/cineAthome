@@ -1,0 +1,19 @@
+table {
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid black;
+}
+
+img {
+    position: relative;
+    width: 100px;
+    height: 150px;
+}
+
+footer {
+    position: relative;
+    bottom: 0;
+    left: 50%;
+}

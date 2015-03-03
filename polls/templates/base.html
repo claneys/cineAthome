@@ -1,0 +1,24 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+   <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+   <title>{% block title %}Cine@Home (enfin presque){% endblock %}</title>
+</head>
+<body>
+<header>Cine@Home</header>
+    <nav>
+       {% block nav %}
+       <ul>
+            <li><a href="/">Accueil</a></li>
+            <li><a href="/lsm/">Liste de films</a></li>
+            <li><a href="/polls/">Sondage</a></li>
+       </ul>
+       {% endblock %}
+   </nav>
+   <section id="content">
+       {% block content %}{% endblock %}
+   </section>
+<footer>&copy; Cine@Home</footer>
+</body>
+</html>

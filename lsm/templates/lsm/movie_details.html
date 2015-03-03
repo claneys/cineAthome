@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Détails sur le film : {{movie.title}}{% endblock %}
+{% block content %}
+
+    <table>
+        <tr>
+            <td><img src="{{movie.thumbnail}}" alt="thumbnail"></td>
+            <td>
+                <ul>
+                    <li>Titre : {{movie.title}}</li>
+                    <li>Synopsis : {{movie.synopsis}}</li>
+                    <li>Note : {{movie.rating}}</li>
+                    <li>Année : {{movie.year}}</li>
+                    <li>Durée : {{movie.runtime}}</li>
+                    <li>Genre : {{movie.genre}}</li>
+                    <li>Pays d'origine : {{movie.country}}</li>
+                </ul>
+            </td>
+        </tr>
+    </table>
+
+</table>
+{% endblock %}
