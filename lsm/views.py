@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.shortcuts import render_to_response
 from models import movie as m
 import re
+from urllib import quote
 
 # Create your views here.
 def list_movie(request):

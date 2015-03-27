@@ -19,7 +19,7 @@ class movieManager(models.Manager):
         cursor = connection.cursor()
         cursor.execute("""
             SELECT idMovie, c00, c01, c05, c07, c08, c11, c14, c21
-            FROM MyVideos78.movie
+            FROM MyVideos90.movie
             WHERE idMovie = %s
             GROUP BY c00""", idMovie)
         
@@ -50,10 +50,10 @@ class movieManager(models.Manager):
         cursor = connection.cursor()
         cursor.execute("""
             SELECT idMovie, c00, c01, c05, c07, c08, c11, c14, c21
-            FROM MyVideos78.movie
+            FROM MyVideos90.movie
             WHERE c00 = %s
             GROUP BY c00""", title)
-        
+            
         movie = [{'idMovie': row[0],
             'title': row[1],
             'synopsis': row[2],
@@ -73,7 +73,7 @@ class movieManager(models.Manager):
         cursor = connection.cursor()
         cursor.execute("""
             SELECT idMovie, c00
-            FROM MyVideos78.movie
+            FROM MyVideos90.movie
             GROUP BY c00""")
         movies = [ (row[0], row[1]) for row in cursor.fetchall()]
         
@@ -83,7 +83,7 @@ class movieManager(models.Manager):
             cursor = connection.cursor()
             cursor.execute("""
                 SELECT c00, c07, c14
-                FROM MyVideos78.movie
+                FROM MyVideos90.movie
                 GROUP BY c00""")
             movies = [ (row[0], row[1], row[2]) for row in cursor.fetchall()]
                 

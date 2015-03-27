@@ -8,12 +8,13 @@
 <body>
 <header>Cine@Home</header>
     <nav>
-       {% block nav %}
-       <ul>
-            <li><a href="/">Accueil</a></li>
-            <li><a href="/lsm/">Liste de films</a></li>
-       </ul>
-       {% endblock %}
+      {% block nav %}
+      <ul>
+         <li><a href="/">Accueil</a></li>
+         <li><a href="/polls/">Sondages</a></li>
+         <li><a href="/lsm/">Liste de films</a></li>
+      </ul>
+      {% endblock %}
    </nav>
    <section id="content">
        {% block content %}{% endblock %}

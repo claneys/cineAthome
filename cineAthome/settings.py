@@ -36,8 +36,9 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'lsm',
+    'cineAthome',
     'polls',
+    'lsm',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -61,10 +62,13 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'cineathome',
-        'HOST': 'gilgamesh.uruk.home',
+        'HOST': 'localhost',
         'USER': 'xbmc',
         'PASSWORD': 'xbmc',
-    }
+        'OPTIONS': {
+              'charset': 'utf8',
+              'use_unicode': True, }
+        },
 }
 
 # Internationalization

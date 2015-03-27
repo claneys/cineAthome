@@ -9,8 +9,9 @@ class createPollForm_form(forms.Form):
     meal_1 = forms.URLField()
     meal_2 = forms.URLField()
 
-class cineForms(forms.Form):
+class voteForms(forms.Form):
     name = forms.CharField(max_length=32)
+    idPoll_id = forms.IntegerField(required=False, widget=forms.HiddenInput())
     movie_1 = forms.BooleanField(required=False)
     movie_2 = forms.BooleanField(required=False)
     movie_3 = forms.BooleanField(required=False)

@@ -2,19 +2,33 @@
 {% block title %}Sondage{% endblock %}
 {% block content %}
 
+<p>Le film gagnant est : <a href={%url movie_details winners.movie %}>{{winners.movie}}</a></p>
+<p>Le repas gagnant est : <a href="{{winners.meal}}">Repas</a></p>
 
-
-<form action="{% url "poll_form" %}" method="post">
-     {% csrf_token %}
      <table>
           <tr><th><label for="id_name">Nom:</label></th>
-               <th><label for="id_movie_1"><a href="{% url 'movie_details' form.fields.movie_1.label %}">{{form.fields.movie_1.label}}</a></label></th>
-               <th><label for="id_movie_2"><a href="{% url 'movie_details' form.fields.movie_2.label %}">{{form.fields.movie_2.label}}</a></label></th>
-               <th><label for="id_movie_3"><a href="{% url 'movie_details' form.fields.movie_3.label %}">{{form.fields.movie_3.label}}</a></label></th>
-               <th><label for="id_movie_4"><a href="{% url 'movie_details' form.fields.movie_4.label %}">{{form.fields.movie_4.label}}</a></label></th>
+               <th><label for="id_movie_1"><a href="{% url movie_details form.fields.movie_1.label %}">{{form.fields.movie_1.label}}</a></label></th>
+               <th><label for="id_movie_2"><a href="{% url movie_details form.fields.movie_2.label %}">{{form.fields.movie_2.label}}</a></label></th>
+               <th><label for="id_movie_3"><a href="{% url movie_details form.fields.movie_3.label %}">{{form.fields.movie_3.label}}</a></label></th>
+               <th><label for="id_movie_4"><a href="{% url movie_details form.fields.movie_4.label %}">{{form.fields.movie_4.label}}</a></label></th>
                <th><label for="id_meal_1"><a href="{{form.fields.meal_1.label}}" >Repas #1</a>:</label></th>
                <th><label for="id_meal_2"><a href="{{form.fields.meal_2.label}}" >Repas #2</a>:</label></th>
           </tr>
+{%if data%}
+     {% for vote in data %}
+          <tr>
+               <td><input id="id_name" maxlength="32" name="name" type="text" value="{{vote.name}}" readonly/></td>
+               <td><input id="id_movie_1" name="movie_1" type="checkbox" {% if vote.movie_1 %} checked {% endif %} readonly /></td>
+               <td><input id="id_movie_2" name="movie_2" type="checkbox" {% if vote.movie_2 %} checked {% endif %} readonly /></td>
+               <td><input id="id_movie_3" name="movie_3" type="checkbox" {% if vote.movie_3 %} checked {% endif %} readonly /></td>
+               <td><input id="id_movie_4" name="movie_4" type="checkbox" {% if vote.movie_4 %} checked {% endif %} readonly /></td>
+               <td><input id="id_meal_1" name="meal_1" type="checkbox"  {% if vote.meal_1 %} checked {% endif %} readonly /></td>
+               <td><input id="id_meal_2" name="meal_2" type="checkbox" {% if vote.meal_2 %} checked {% endif %} readonly /></td>
+          </tr>
+     {% endfor %}
+{%endif%}
+<form action="{% url poll_form %}" method="post">
+     {% csrf_token %}
           <tr>
                <td><input id="id_name" maxlength="32" name="name" type="text" /></td>
                <td><input id="id_movie_1" name="movie_1" type="checkbox" /></td>
@@ -23,6 +37,16 @@
                <td><input id="id_movie_4" name="movie_4" type="checkbox" /></td>
                <td><input id="id_meal_1" name="meal_1" type="checkbox" /></td>
                <td><input id="id_meal_2" name="meal_2" type="checkbox" /></td>
+               <td><input id="id_idPoll_id" name="idPoll_id" type="hidden" value="{{form.fields.idPoll_id}}" /></td>
+          </tr>
+          <tr>
+               <td></td>
+               <td>{{totals.total_movie_1.0}}</td>
+               <td>{{totals.total_movie_2.0}}</td>
+               <td>{{totals.total_movie_3.0}}</td>
+               <td>{{totals.total_movie_4.0}}</td>
+               <td>{{totals.total_meal_1.0}}</td>
+               <td>{{totals.total_meal_2.0}}</td>
           </tr>
      </table>
      <input type="submit" value="Submit" />    
